@@ -1,0 +1,74 @@
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  #content {
+    display: none;
+    position: relative;
+    width: 796.8px; /* PDF width */
+    height: 1121.28px; /* PDF height */
+    background-image: url('bg.jpg'); /* Replace 'background.jpg' with your image URL */
+    background-size: cover;
+  }
+
+  #text {
+    color: black;
+    padding-top: 175px;
+  }
+
+  button {
+    width: 300px;
+    font-size: 30px;
+    padding: 10px 50px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    margin-left: 250px;
+  }
+  p{
+    padding-left: 35px;
+    padding-right: 20px;
+    font-family: sans-serif, Roboto Slab;
+    font-weight: 550;
+    font-size: 21.5px;
+    font-size: 22.5px;
+  }
+  
+  #form{
+    font-size: 35px;
+    width: 8.3in;
+    position: relative;
+    display: block;
+    font-family: Poppins;
+  }
+  
+  #form label{
+    font-weight: 500;
+    margin-left: 40px;
+  }
+  
+  #form input{
+    outline: none;
+    font-size: 35px;
+    border: 2px solid #ccc;
+    width: 550px;
+    font-family: Poppins;
+    font-weight: 400;
+  }
+  
+  #form input:focus{
+    border: 2px solid black;
+  }
+  
+  #form .inp-bx{
+    position: absolute;
+    left: 180px;
+  }
+  
+  #form .inp{
+    margin: 30px 0;
+  }

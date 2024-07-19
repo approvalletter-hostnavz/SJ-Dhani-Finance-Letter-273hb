@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Al-Khair Letter</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+<link rel="stylesheet" href="style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+  
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap')
+  </style>
+ 
+<br><br>
+<form id="form">
+  <center>
+  <h2><u>Dhani Loan Letter</u></h2>
+  </center>
+  
+  <div class="inp">
+  <label for="name">Name:</label>
+  <input type="text" id="name" oninput="checkFilled(this)" class="inp-bx"><br>
+  </div>
+  
+  <div class="inp">
+  <label for="loan">Loan:</label>&nbsp; 
+  <input type="text" id="loan" oninput="checkFilled(this)" class="inp-bx"><br>
+  </div>
+  
+  <div class="inp">
+  <label for="emi">EMI:</label>
+  <input type="text" id="emi" oninput="checkFilled(this)" class="inp-bx"><br>
+  </div>
+  
+  <div class="inp">
+  <label for="year">Year:</label>
+  <input type="number" id="year" oninput="checkFilled(this)" class="inp-bx"><br>
+  </div>
+  
+  <div class="inp">
+  <label for="fees">Fees:</label>
+  <input type="text" id="fees" oninput="checkFilled(this)" class="inp-bx"><br>
+  </div>
+  
+  <label for="loantype">Loan Type:</label>
+  <select id="loantype" style="font-size: 35px; outline: none; width: 220px; border: 1px solid #ccc; padding: 5px 10px;">
+    <option>Personal</option>
+    <option>Business</option>
+    <option>Home</option>
+    <option>Car</option>
+    <option>Education</option>
+  </select>
+  
+  <input type="reset" style="border: 1px solid #ccc; margin-left: 10px; width: 150px; padding: 5px 0;"><br><br>
+  
+</form>
+
+<center>
+<input type="submit" id="subm" style="font-family: Poppins; font-size: 35px; border: 1px solid #ccc; width: 250px; margin-left: 250px;" onclick="showInput();">
+</center>
+
+
+
+<div id="content">
+  <div id="text">
+    
+    <!--Paragraph 1-->
+    <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Date:- <span id="dateDisplay" contenteditable></span><br>Name: <span id="display">Label</span><br>Application No.: BJFN0374/243/A069<br>Loan Amount: <span id="display2">Label</span>/-<br>Subject: Approval For The <span id="display3">Label</span> Loan</p>
+    
+    <!--Paragraph 2-->
+    <p>Dear <span id="display4">Label</span>,<br><br> &nbsp; &nbsp; &nbsp; We are sending you this letter to confirm your loan has been approved by "Dhani Finance Limited" for Monthly EMI <span id="display5">Label</span> for <span id="display6">Label</span> Years at 2% reducing rate of interest through funding scheme.</p>
+    
+    <!--Paragraph 3-->
+    <p> &nbsp; &nbsp; &nbsp; When you submit your amount for processing charge Rs. <span id="display7">Label</span> its company responsibility to handover your loan Amount Rs. <span id="display8">Label</span> and team will visit to your place shortly.</p>
+    
+    <!--Paragraph 4-->
+    <p>Please continue your loan process without any hesitation.<br>Loan processing charge:- <span id="display9">Label</span></p>
+    
+    <!--Paragraph 5-->
+    <p>Payment this account:-<br>Name:- Dhani Finance Ltd<br>A/C:- 20361414369<br>IFSC:- FINO0001157<br>Bank:- Fino Payments Bank</p>
+    
+    <!--Paragraph 6-->
+    <p>Note:- Cash deposit not accepted by company (Online transaction needed for IMPS/NEFT/RTGS/MOBILE BANKING your Bank Account/Transaction Verification).
+</p>
+    
+    
+  </div>
+  <div id="qrCode" style="position: absolute; left: 180px; bottom: 10px;"></div>
+ </div>
+ 
+  <button onclick="downloadPDF()" id= "dwn-btn" style="display: none;">Download As PDF</button><br>
+  
+  <button onclick="downloadPic()" id= "dwn-pic" style="display: none; background: limegreen;">Download As Picture</button>
+
+  <!-- Include html2canvas library -->
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+
+
+
+<script src="main.js"></script>
+
+</body>
+</html>
