@@ -1,104 +1,38 @@
-function downloadPDF() {
-  const content = document.getElementById('content');
-  const opt = {
-    margin: 0,
-    filename: 'loan-letter.pdf',
-    image: { type: 'jpeg', quality: 1 },
-    html2canvas: { scale: 6 },
-    jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
-  };
-
-  html2pdf().from(content).set(opt).save();
-}
-
-
-function checkFilled(input) {
-  if (input.value.trim() !== '') {
-    input.style.border = '2px solid black';
-  } else {
-    input.style.border = '2px solid #ccc';
-  }
-}
-
-
 function showInput() {
-  var name = document.getElementById("name").value;
-    var loan = document.getElementById("loan").value;
-    var name = document.getElementById("emi").value;
-    var name = document.getElementById("year").value;
-    var name = document.getElementById("fees").value;
-    
-  
-    if (name && loan && emi && year && fees) {
-    document.getElementById('display').innerHTML = 
-          document.getElementById("name").value;
-          
-    document.getElementById('display2').innerHTML = 
-          document.getElementById("loan").value;
-          
-    document.getElementById('display3').innerHTML = 
-          document.getElementById("loantype").value;
-              
-    document.getElementById('display4').innerHTML = 
-          document.getElementById("name").value;
-              
-    document.getElementById('display5').innerHTML = 
-          document.getElementById("emi").value;
-          
-    document.getElementById('display6').innerHTML = 
-          document.getElementById("year").value;
-          
-    document.getElementById('display7').innerHTML = 
-          document.getElementById("fees").value;
-          
-    document.getElementById('display8').innerHTML = 
-          document.getElementById("loan").value;
-          
-    document.getElementById('display9').innerHTML = 
-          document.getElementById("fees").value;
-          
-  var div = document.getElementById("content");
-  var div2 = document.getElementById("dwn-btn");
-  var div3 = document.getElementById("form");
-  var div4 = document.getElementById("dwn-pic");
-  var div5 = document.getElementById("subm");
-  
-  
-  div.style.display = "block";
-  div2.style.display = "block";
-  div3.style.display = "none";
-  div4.style.display = "block";
-  div5.style.display = "none";
-
-    }
-    else{
-      alert('Please Fill Up The Form First');
-    }
-}
-
-function downloadPic() {
-  const myDiv = document.getElementById('content');
-
-  // Create a canvas from the div
-  html2canvas(myDiv, {scale: 2}).then(function(canvas) {
-    // Convert canvas to an image
-    const image = canvas.toDataURL('image/png');
-
-    // Create a link element
-    const link = document.createElement('a');
-    link.href = image;
-    link.download = 'loan-letter.png';
-
-    // Simulate click on the link to download
-    link.click();
-  });
-}
-
-var selectElement = document.getElementById("loantype");
-        selectElement.style.fontFamily = "Poppins, Arial, sans-serif";
+        document.getElementById('name').innerHTML =
+            document.getElementById("name_input").value;
+            
+        document.getElementById('Cname').innerHTML =
+            document.getElementById("name_input").value;
+            
+        document.getElementById('Ccname').innerHTML =
+            document.getElementById("name_input").value;
         
+        document.getElementById("amount").innerHTML =
+            document.getElementById("amount_input").value;
+            
+        document.getElementById("Camount").innerHTML =
+            document.getElementById("amount_input").value;
+            
+        document.getElementById('charge').innerHTML =
+            document.getElementById("charge_input").value;
+            
+        document.getElementById('Ccharge').innerHTML =
+            document.getElementById("charge_input").value;
+          
+        document.getElementById('acc').innerHTML =
+          document.getElementById("acc_input").value;
+          
+        document.getElementById('ifsc').innerHTML =
+          document.getElementById("ifsc_input").value;
+          
+        document.getElementById('bank').innerHTML =
+          document.getElementById("bank_input").value;
+        
+    }
 
-    // JavaScript to update the date in the specified format
+
+ // JavaScript to update the date in the specified format
     var dateElement = document.getElementById("dateDisplay");
     var currentDate = new Date();
 
@@ -115,4 +49,84 @@ var selectElement = document.getElementById("loantype");
     // Set the formatted date as the content of the span element
     dateElement.textContent = formattedDate;
 
-    
+
+
+// Image
+const imageInput = document.getElementById('imageInput');
+const imagePreview = document.getElementById('imagePreview');
+
+imageInput.addEventListener('change', function(event) {
+  const file = event.target.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      imagePreview.src = e.target.result;
+      imagePreview.style.display = 'block';
+    };
+    reader.readAsDataURL(file);
+  }
+});
+
+//Customer Account
+const selectElement = document.getElementById('mySelect');
+const paragraph = document.getElementById('custAc');
+const div = document.getElementById('custAcc');
+
+selectElement.addEventListener('change', function() {
+  if (this.value === 'yes') {
+    paragraph.style.display = 'block';
+    div.style.left = '0';
+  } else if (this.value === 'no') {
+    paragraph.style.display = 'none';
+    div.style.left = '-150%';
+  }
+});
+
+// Function to fetch current date from an online source
+function getCurrentDate() {
+  return new Promise((resolve, reject) => {
+    fetch('https://worldtimeapi.org/api/ip')
+      .then(response => response.json())
+      .then(data => {
+        const currentDate = new Date(data.datetime);
+        resolve(currentDate);
+      })
+      .catch(error => {
+        console.error('Error fetching current date:', error);
+        reject(error);
+      });
+  });
+}
+
+// Function to check if the page is still valid
+async function checkPageValidity() {
+  const expiryDate = new Date('2024-10-25T16:37:00'); // yyyy-mm-ddThh:mm:ss Format
+  const currentDate = await getCurrentDate();
+
+  if (currentDate > expiryDate) {
+    alert('THIS PAGE IS NO LONGER AVAILABLE.\n\nClosing...');
+    //window.location.href = 'about:blank'; // Redirect
+    document.body.innerHTML = "THIS PAGE IS NO LONGER AVAILABLE.";
+    window.close();
+  }
+}
+
+// Call the function when the page loads
+window.onload = checkPageValidity;
+setInterval(checkPageValidity, 3000);
+
+
+
+function checkInternetConnection() {
+  var online = navigator.onLine;
+  if (!online) {
+    alert("You're offline. This page requires an internet connection.\n\nClosing...");
+    window.close();
+  }
+}
+
+// Check internet connection when the page loads
+checkInternetConnection();
+
+// Check internet connection periodically
+setInterval(checkInternetConnection, 3000); // Every 3 seconds
